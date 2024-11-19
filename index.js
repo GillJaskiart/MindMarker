@@ -4,6 +4,25 @@ const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
 const reminderController = require("./controller/reminder_controller");
 const authController = require("./controller/auth_controller");
+// const express = require("express");
+
+app.use(
+  session({
+    secret: "secret", // used to make the cookie stored in the browser digitially signed
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  })
+);
+
+const passport = require("./middleware/passport");
+
+app.use(passport.initialize()); // means 'start passport'
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "public")));
 
