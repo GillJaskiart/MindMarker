@@ -5,7 +5,7 @@
         <img src="/secure-icon.png" alt="icon" width="20%" />
       </h1>
       <h2>Login</h2>
-      <form action="/auth/login" method="POST">
+      <form action="/login" method="POST">
         <div class="form-group">
           <label for="email">Email</label>
           <input
@@ -29,10 +29,6 @@
         <%# When the user clicks 'login', there will be a POST request sent to /auth/login (check the <form action="/auth/login" method="POST"> above %>
         <%# It will call the POST request inside the 'authRoute.js file. the post code will be triggered. (router.post()) %>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
-        <p> OR</p>
-         <!-- Login with GitHub -->
-         <a href="/auth/github" class="btn btn-primary btn-block">Login with GitHub</a>
-        <!--<button type="submit" class="btn btn-primary btn-block">Login with GitHub</button> -->
       </form>
       <p class="mt-4">New User? <a href="/auth/register">Register</a></p>
       <p>Forgot Password? <a href="/auth/forgot">Reset</a></p>
