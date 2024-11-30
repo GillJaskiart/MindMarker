@@ -18,8 +18,12 @@ router.post(
 );
 
 router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/auth/login");
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/auth/login");
+  });
 });
 
 
