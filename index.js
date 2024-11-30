@@ -29,6 +29,8 @@ app.use(
 );
 
 const passport = require("./middleware/passport");
+const authRoute = require("./routes/authRoute");
+const indexRoute = require("./routes/indexRoute");
 
 app.use(express.json());
 app.use(expressLayouts);
@@ -49,34 +51,8 @@ app.use((req, res, next) => {
 });
 
 // Routes start here
-
-// case 1: show a list of reminders
-app.get("/reminders", reminderController.list);
-
-// case 2: user creates a new reminder
-app.get("/reminder/new", reminderController.new);
-
-app.get("/reminder/:id", reminderController.listOne);
-
-// case 6: Edit an individual reminder
-app.get("/reminder/:id/edit", reminderController.edit);
-
-// When the user clicks 'submit' on the create reminder page, the reminder is added to the list of reminders
-app.post("/reminder/", reminderController.create);
-
-// Implement this yourself
-// user clicks the update button from case 6 and expects their reminder to be updated.
-app.post("/reminder/update/:id", reminderController.update);
-
-// Implement this yourself
-// user clicks the delete button and we expect the reminder to be deleted
-app.post("/reminder/delete/:id", reminderController.delete);
-
-// We will fix this soon.
-app.get("/register", authController.register);
-app.get("/login", authController.login);
-app.post("/register", authController.registerSubmit);
-app.post("/login", authController.loginSubmit);
+app.use("/", indexRoute);
+app.use("/auth", authRoute);
 
 app.listen(3001, function () {
   console.log(
