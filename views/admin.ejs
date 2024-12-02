@@ -1,0 +1,31 @@
+<h1 class="mt-4">Admin Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
+<a href="/auth/logout" class="btn btn-secondary ">Logout</a>
+
+<p><br>Current Active Sessions:</p>
+
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>SessionID</th>
+                <th>UserID</th>
+                <th>Revoke</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let counter = 0 %>
+            <% for (let session in sessions) { %>
+                <tr>
+                    <td><%= session %></td>
+                    <td><%= Object.values(sessions)[counter].passport.user %></td>
+                    <td><form class="RevokeForm "method="POST" action=<%= "/revoke/" + session %>>
+                    <button type="submit" class="btn btn-danger">Revoke</button>
+                    </form></td>
+                </tr>
+                <% counter = counter + 1 %>
+            <% }; %>
+        </tbody>
+    </table>
+</div>
