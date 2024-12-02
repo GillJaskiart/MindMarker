@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="post" action="/reminders">
+      <input placeholder="reminder title" name="title" type="text" />
+      <input
+        placeholder="reminder description"
+        name="description"
+        type="text"
+      />
+      <button type="submit">Create Reminder</button>
+    </form>
+    <% reminders.forEach(reminder => { %>
+    <div>
+      <div>
+        Title:
+        <span><%= reminder.title %></span>
+      </div>
+      <div>
+        Description:
+        <span><%= reminder.description %></span>
+      </div>
+      Completed<input type="checkbox" <%= reminder.completed ? "checked": null
+      %> />
+    </div>
+    <% }) %>
+  </body>
+</html>
