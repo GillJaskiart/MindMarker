@@ -1,23 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const { ensureAuthenticated, isAdmin } = require("../middleware/checkAuth");
-
+const authController = require("../controller/auth_controller");
 const reminderController = require("../controller/reminder_controller");
 
 // router.get("/", (req, res) => {
 //   res.send("welcome");
 // });
 
-router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  // check if the user is admin, if admin then redirect to admin page
-  if (req.user.role === "admin") {
-    res.redirect("/admin");
-  } else {
-    res.render("auth/dashboard", {
-      user: req.user,
-    });
-  }
-});
+router.get("/dashboard", ensureAuthenticated, authController.dashboard);
+
+// router.get("/dashboard", ensureAuthenticated, (req, res) => {
+//   // check if the user is admin, if admin then redirect to admin page
+//   if (req.user.role === "admin") {
+//     res.redirect("/admin");
+//   } else {
+//     res.render("auth/dashboard", {
+//       user: req.user,
+//     });
+//   }
+// });
 
 router.get("/admin", ensureAuthenticated, (req, res) => {
   req.sessionStore.all((err, sessions) => {

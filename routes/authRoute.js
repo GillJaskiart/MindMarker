@@ -7,7 +7,7 @@ const authController = require("../controller/auth_controller");
 
 const router = express.Router();
 
-router.get("/login", forwardAuthenticated, (req, res) => res.render("auth/login"));
+router.get("/login", forwardAuthenticated, authController.login);
 
 router.post(
   "/login",
@@ -32,6 +32,13 @@ router.get("/register", authController.register);
 // app.get("/login", authController.login);
 router.post("/register", authController.registerSubmit);
 // app.post("/login", authController.loginSubmit);
+
+router.get("/forgot", authController.forgotPassword);
+router.post("/forgot", authController.forgotPasswordSubmit);
+
+router.get("/reset-password", authController.resetPassword);
+router.post("/reset-password", authController.resetPasswordSubmit);
+
 
 
 module.exports = router;

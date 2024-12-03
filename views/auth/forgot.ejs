@@ -1,0 +1,27 @@
+<div class="container">
+    <% if (message) { %>
+      <div class="alert alert-<%= messageType %> text-center"><%= message %></div>
+    <% } %>
+    <div class="row mt-5">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body text-center">
+          <h2>Forgot Password</h2>
+          <form action="/auth/forgot" method="POST">
+            <div class="form-group">
+              <label for="email">Enter your email address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter Email"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
