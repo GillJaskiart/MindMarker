@@ -6,6 +6,8 @@ const db = new PrismaClient();
 
 let remindersController = {
   list:  async (req, res, user) => {
+    // console.log("THE USER IS: ");
+    // console.log(res.locals.user);
     const reminders = await db.reminder.findMany({
       where: { userId: req.user.id },
     });
