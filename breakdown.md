@@ -15,7 +15,7 @@ Extra:
 Extra:
 1. watched the lecture videos for authentication
 
-## Chelise:
+## Chelsie:
 1. Completed edit reminder and delete reminder feature
 Extra:
 1. Watched the lecture videos for authentication
@@ -58,5 +58,6 @@ Extra:
 1. handle merge conflict for main and edit-reminder branches - removed node_modules from edit-reminer and merged the branches.
 
 ## Chelsie:
-1. Implemented "register" and "forgot password" features.
+1. Implemented "register" and "forgot password" features by creating forgotPassword, forgotPasswordSubmit, resetPassword & resetPasswordSubmit functions.
 2. Fixed the ejs templates for both routes.
+3. Created the reset-password ejs template.
